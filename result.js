@@ -8,6 +8,9 @@ var util = require("util");
  * @param username
  * @constructor
  */
+
+console.log("Halløj!");
+
 function Profile(username) {
 
     EventEmitter.call(this);
