@@ -18,6 +18,8 @@
 const Language = require('@google-cloud/language');
 const Storage = require('@google-cloud/storage');
 
+process.env.GOOGLE_APPLICATION_CREDENTIALS = "./credentials.json";
+
 // [START language_sentiment_string]
 function analyzeSentimentOfText (text) {
   // Instantiates a client
