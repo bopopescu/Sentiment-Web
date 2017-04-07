@@ -1,1 +1,51 @@
-President Obama is speaking at the White House.
+Say an investor had only two options of what to put money in: gold or stocks. Gold has an average annual rate of return of 3 percent, while the stock market delivers a healthier 5 percent. Which should the investor choose? Seems simple, right? Take the higher payout.
+
+But annual averages can be deceiving. In fact, these two have very different risk profiles over time. Stocks tend to pay off steadily in good times when the economy is growing and we are relatively flush, but to decline in bad times. Gold might pay off next to nothing for years at a time and present real opportunity costs, but it delivers handsomely during unexpected economic crises.
+
+Investing in gold is a type of insurance policy against tough times. Financial markets are revealing that investors are willing to accept a lower average return for that insurance, precisely because it helps to manage risk.
+
+Last week, President Trump signed an executive order about climate change that runs counter to this insight from financial markets. The headlines rightly highlighted the dismantling of climate policies like the Clean Power Plan. But buried in the details is an administrative tweak to the most important climate measurement in the federal government’s climate toolbox: the social cost of carbon.
+
+Continue reading the main story
+RELATED COVERAGE
+
+
+Trump Signs Executive Order Unwinding Obama Climate Policies MARCH 28, 2017
+graphic
+Trump’s Executive Order Pushes the U.S. Climate Pledge Further Out of Reach MARCH 28, 2017
+
+CLIMATE CHANGE
+There’s a Formula for Deciding When to Extract Fossil Fuels DEC. 1, 2015
+
+ON THE ENVIRONMENT
+India’s Air-Conditioning and Climate Change Quandary OCT. 26, 2016
+The social cost of carbon, the estimated monetary damages caused by the release of an additional ton of carbon dioxide into the atmosphere, is the linchpin for how the federal government values climate damages. It drives the cost-benefits analyses that have determined the stringency of such things as fuel economy standards and the Clean Power Plan.
+
+Before the executive order, the social cost of carbon was set at about $40 per metric ton of carbon released. Under the executive order, President Trump appears to be putting us on a path toward valuing climate damages at much less — possibly less than $5 per metric ton of carbon.
+
+How is it that simple to reduce the estimated cost of climate damages from carbon emissions by 90 percent or more? It all depends on how we choose to value future risks.
+
+A concept known as the discount rate makes it possible to translate future damages into their present value. In 2009, President Obama convened an interagency working group, of which I was a co-leader, to come up with a uniform method for estimating the social cost of carbon: the resulting number to be used across all federal agencies. Our group chose to emphasize estimates based on a discount rate of 3 percent.
+
+The choice of a discount rate matters a great deal. Consider $100 of damages that occur 100 years from now. Because these damages are so far off in the future, it is natural to value them today at less than $100 — but how much is not immediately apparent. This is where the discount rate comes in.
+
+With a discount rate of 3 percent, these damages are worth $5.20 today — that is, we would be willing to pay up to $5.20 to avoid them. But Mr. Trump’s executive order points to using a 7 percent discount rate. In doing so, the administration is saying that it is worth only 12 cents today to prevent $100 of damages in 100 years. (For the calculation, you divide $100 by a figure that is one plus the rate — in these examples 1.03 for a 3 percent discount rate and 1.07 for a 7 percent discount rate — for each of the 100 years, or to the 100th power.)
+
+Although this might seem like an arcane administrative debate, the discount rate is the critical ingredient for how we value the future. And there is arguably no more consequential instance of the need to choose an appropriate discount rate than the case of climate change, because the greenhouse gases we release today will alter the climate for centuries.
+
+At its core, using a lower discount rate to calculate the social cost of carbon means paying more to mitigate greenhouse gas emissions today. But, of course, paying more today means that those resources cannot be put to use for food, shelter and other goods.
+
+Which discount rate best serves our interest in valuing climate risk? That’s where the financial markets’ lesson comes in.
+
+When discounting future costs, the markets tell us to choose a discount rate that matches the risk profile of the investment. So if the risk acts like a tax on the economy (e.g., it reduces G.D.P. by a fixed percentage), a higher discount rate like the stock market’s average annual return of 5 percent would be justified. But if the risk is potentially disruptive, like a severe recession or worse, then markets point to a lower discount rate, perhaps like gold’s annual average return or even lower.
+
+In this way, financial markets tell us that spending a little extra now as insurance to protect against potentially disruptive risk is a wise strategy. This lesson was most recently illustrated during the Great Recession. While the stock market declined by 53 percent from December 2007 to March 2009, gold’s value increased by 14 percent during this period.
+
+Investors who had put some portion of their investments in gold — as an insurance policy — reaped the benefits as gold outperformed the stock market by almost 70 percent at exactly the moment that the job market was deteriorating and other investments were declining in value. In comparison, households with no such insurance policy were left completely exposed to the Great Recession.
+
+Could climate change be broadly disruptive? The science suggests that the answer is yes. There is a lot that we don’t know with certainty about climate change: How much will temperature increase for a given increase in greenhouse gas concentrations? How much will sea levels rise?
+
+
+Although we do not have certain answers to these questions, the range of potential answers includes very disruptive possibilities. This means that climate mitigation could protect us from possibly catastrophic events — mass migration, crop failures, a jarring sea-level rise and spikes in mortality due to high temperatures.
+
+If those risks don’t materialize, there will have been costs to spending today on climate mitigation. But if those risks are real, using a low discount rate to choose the degree of climate mitigation today will be like having invested in gold before the Great Recession.
