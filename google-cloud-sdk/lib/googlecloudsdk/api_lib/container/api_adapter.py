@@ -46,8 +46,8 @@ Please specify one of the following node pools:
 """
 
 MISMATCH_AUTHORIZED_NETWORKS_ERROR_MSG = """\
-Cannot use --master-authorized-networks \
-if --enable-master-authorized-networks is not \
+Cannot use --main-authorized-networks \
+if --enable-main-authorized-networks is not \
 specified."""
 
 MAX_NODES_PER_POOL = 1000
@@ -438,8 +438,8 @@ class CreateClusterOptions(object):
                enable_autorepair=None,
                enable_autoupgrade=None,
                service_account=None,
-               enable_master_authorized_networks=None,
-               master_authorized_networks=None):
+               enable_main_authorized_networks=None,
+               main_authorized_networks=None):
     self.node_machine_type = node_machine_type
     self.node_source_image = node_source_image
     self.node_disk_size_gb = node_disk_size_gb
@@ -469,8 +469,8 @@ class CreateClusterOptions(object):
     self.enable_autorepair = enable_autorepair
     self.enable_autoupgrade = enable_autoupgrade
     self.service_account = service_account
-    self.enable_master_authorized_networks = enable_master_authorized_networks
-    self.master_authorized_networks = master_authorized_networks
+    self.enable_main_authorized_networks = enable_main_authorized_networks
+    self.main_authorized_networks = main_authorized_networks
 
 
 INGRESS = 'HttpLoadBalancing'
@@ -481,7 +481,7 @@ class UpdateClusterOptions(object):
 
   def __init__(self,
                version=None,
-               update_master=None,
+               update_main=None,
                update_nodes=None,
                node_pool=None,
                monitoring_service=None,
@@ -491,10 +491,10 @@ class UpdateClusterOptions(object):
                max_nodes=None,
                image_type=None,
                locations=None,
-               enable_master_authorized_networks=None,
-               master_authorized_networks=None):
+               enable_main_authorized_networks=None,
+               main_authorized_networks=None):
     self.version = version
-    self.update_master = bool(update_master)
+    self.update_main = bool(update_main)
     self.update_nodes = bool(update_nodes)
     self.node_pool = node_pool
     self.monitoring_service = monitoring_service
@@ -504,8 +504,8 @@ class UpdateClusterOptions(object):
     self.max_nodes = max_nodes
     self.image_type = image_type
     self.locations = locations
-    self.enable_master_authorized_networks = enable_master_authorized_networks
-    self.master_authorized_networks = master_authorized_networks
+    self.enable_main_authorized_networks = enable_main_authorized_networks
+    self.main_authorized_networks = main_authorized_networks
 
 
 class CreateNodePoolOptions(object):
@@ -561,7 +561,7 @@ class V1Adapter(APIAdapter):
     return cluster_ref.zone
 
   def Version(self, cluster):
-    return cluster.currentMasterVersion
+    return cluster.currentMainVersion
 
   def CreateCluster(self, cluster_ref, options):
     node_config = self.messages.NodeConfig()
@@ -625,7 +625,7 @@ class V1Adapter(APIAdapter):
     cluster = self.messages.Cluster(
         name=cluster_ref.clusterId,
         nodePools=pools,
-        masterAuth=self.messages.MasterAuth(username=options.user,
+        mainAuth=self.messages.MainAuth(username=options.user,
                                             password=options.password))
     if options.additional_zones:
       cluster.locations = sorted([cluster_ref.zone] + options.additional_zones)
@@ -646,16 +646,16 @@ class V1Adapter(APIAdapter):
           disable_ingress=INGRESS in options.disable_addons or None,
           disable_hpa=HPA in options.disable_addons or None)
       cluster.addonsConfig = addons
-    if options.enable_master_authorized_networks:
-      authorized_networks = self.messages.MasterAuthorizedNetworks(
-          enabled=options.enable_master_authorized_networks)
-      if options.master_authorized_networks:
-        for network in options.master_authorized_networks:
+    if options.enable_main_authorized_networks:
+      authorized_networks = self.messages.MainAuthorizedNetworks(
+          enabled=options.enable_main_authorized_networks)
+      if options.main_authorized_networks:
+        for network in options.main_authorized_networks:
           authorized_networks.cidrs.append(self.messages.CIDR(network=network))
-      cluster.masterAuthorizedNetworks = authorized_networks
-    elif options.master_authorized_networks:
-      # Raise error if use --master-authorized-networks without
-      # --enable-master-authorized-networks.
+      cluster.mainAuthorizedNetworks = authorized_networks
+    elif options.main_authorized_networks:
+      # Raise error if use --main-authorized-networks without
+      # --enable-main-authorized-networks.
       raise util.Error(MISMATCH_AUTHORIZED_NETWORKS_ERROR_MSG)
 
     if options.enable_kubernetes_alpha:
@@ -678,9 +678,9 @@ class V1Adapter(APIAdapter):
           desiredNodeVersion=options.version,
           desiredNodePoolId=options.node_pool,
           desiredImageType=options.image_type)
-    elif options.update_master:
+    elif options.update_main:
       update = self.messages.ClusterUpdate(
-          desiredMasterVersion=options.version)
+          desiredMainVersion=options.version)
     elif options.monitoring_service:
       update = self.messages.ClusterUpdate(
           desiredMonitoringService=options.monitoring_service)
@@ -701,20 +701,20 @@ class V1Adapter(APIAdapter):
           desiredNodePoolAutoscaling=autoscaling)
     elif options.locations:
       update = self.messages.ClusterUpdate(desiredLocations=options.locations)
-    elif options.enable_master_authorized_networks is not None:
+    elif options.enable_main_authorized_networks is not None:
       # For update, we can either enable or disable.
-      authorized_networks = self.messages.MasterAuthorizedNetworks(
-          enabled=options.enable_master_authorized_networks)
-      if options.master_authorized_networks:
-        for network in options.master_authorized_networks:
+      authorized_networks = self.messages.MainAuthorizedNetworks(
+          enabled=options.enable_main_authorized_networks)
+      if options.main_authorized_networks:
+        for network in options.main_authorized_networks:
           authorized_networks.cidrs.append(self.messages.CIDR(network=network))
       update = self.messages.ClusterUpdate(
-          desiredMasterAuthorizedNetworks=authorized_networks)
+          desiredMainAuthorizedNetworks=authorized_networks)
 
-    if (options.master_authorized_networks
-        and not options.enable_master_authorized_networks):
-      # Raise error if use --master-authorized-networks without
-      # --enable-master-authorized-networks.
+    if (options.main_authorized_networks
+        and not options.enable_main_authorized_networks):
+      # Raise error if use --main-authorized-networks without
+      # --enable-main-authorized-networks.
       raise util.Error(MISMATCH_AUTHORIZED_NETWORKS_ERROR_MSG)
 
     op = self.client.projects_zones_clusters.Update(

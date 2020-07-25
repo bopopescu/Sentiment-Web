@@ -114,7 +114,7 @@ class Update(base.UpdateCommand):
     group = parser.add_mutually_exclusive_group(required=True)
     _AddMutuallyExclusiveArgs(group)
     flags.AddClusterAutoscalingFlags(parser, group, hidden=True)
-    flags.AddMasterAuthorizedNetworksFlags(parser, group, hidden=True)
+    flags.AddMainAuthorizedNetworksFlags(parser, group, hidden=True)
 
   def Run(self, args):
     """This is what gets called when the user runs this command.
@@ -143,7 +143,7 @@ class Update(base.UpdateCommand):
     if hasattr(args, 'additional_zones') and args.additional_zones is not None:
       locations = sorted([cluster_ref.zone] + args.additional_zones)
 
-    enable_master_authorized_networks = args.enable_master_authorized_networks
+    enable_main_authorized_networks = args.enable_main_authorized_networks
     options = api_adapter.UpdateClusterOptions(
         monitoring_service=args.monitoring_service,
         disable_addons=args.disable_addons,
@@ -152,8 +152,8 @@ class Update(base.UpdateCommand):
         max_nodes=args.max_nodes,
         node_pool=args.node_pool,
         locations=locations,
-        enable_master_authorized_networks=enable_master_authorized_networks,
-        master_authorized_networks=args.master_authorized_networks)
+        enable_main_authorized_networks=enable_main_authorized_networks,
+        main_authorized_networks=args.main_authorized_networks)
 
     try:
       op_ref = adapter.UpdateCluster(cluster_ref, options)
@@ -178,7 +178,7 @@ class UpdateBeta(Update):
     _AddMutuallyExclusiveArgs(group)
     flags.AddClusterAutoscalingFlags(parser, group, hidden=True)
     _AddAdditionalZonesArg(group)
-    flags.AddMasterAuthorizedNetworksFlags(parser, group, hidden=True)
+    flags.AddMainAuthorizedNetworksFlags(parser, group, hidden=True)
 
 
 @base.ReleaseTracks(base.ReleaseTrack.ALPHA)
@@ -192,4 +192,4 @@ class UpdateAlpha(Update):
     _AddMutuallyExclusiveArgs(group)
     flags.AddClusterAutoscalingFlags(parser, group)
     _AddAdditionalZonesArg(group)
-    flags.AddMasterAuthorizedNetworksFlags(parser, group, hidden=True)
+    flags.AddMainAuthorizedNetworksFlags(parser, group, hidden=True)
